@@ -7,7 +7,7 @@
     "_js_merge": "./node_modules/.bin/browserify source/js/index.js --outfile=build/app.js",
     "_js_compile": "./node_modules/.bin/babel build/app.js --presets=es2015,babili --out-file=build/app.js",
     "js": "npm run _js_merge && npm run _js_compile",
-
+    "css": "lessc --autoprefix=\"> 5%\" -x source/less/index.less build/app.css",
     "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
@@ -27,6 +27,8 @@
     "babelify": "^7.3.0",
     "babili": "^0.1.4",
     "browserify": "^14.4.0",
+    "less": "^2.7.2",
+    "less-plugin-autoprefix": "^1.5.1",
     "mocha": "^3.4.2"
   },
   "browserify": {

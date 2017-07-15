@@ -10,7 +10,7 @@
     "css": "lessc --autoprefix=\"> 5%\" -x source/less/index.less build/assets/app.css",
     "html": "cp source/index.html build/index.html",
     "all": "npm run js && npm run css && npm run html",
-    "test": "mocha --compilers js:babel-core/register"
+    "test": "./node_modules/.bin/mocha --compilers=js:babel-core/register --require=test/unit.js test/source/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -29,9 +29,11 @@
     "babelify": "^7.3.0",
     "babili": "^0.1.4",
     "browserify": "^14.4.0",
+    "chai": "^4.1.0",
     "less": "^2.7.2",
     "less-plugin-autoprefix": "^1.5.1",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.8"
   },
   "browserify": {
     "transform": [

@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "_js_merge": "./node_modules/.bin/browserify source/js/index.js --outfile=build/app.js",
+    "_js_compile": "./node_modules/.bin/babel build/app.js --presets=es2015,babili --out-file=build/app.js",
+    "js": "npm run _js_merge && npm run _js_compile",
+
+    "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,19 @@
   "bugs": {
     "url": "https://github.com/renatopp/rock-paper-scissors/issues"
   },
-  "homepage": "https://github.com/renatopp/rock-paper-scissors#readme"
+  "homepage": "https://github.com/renatopp/rock-paper-scissors#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.25.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "babili": "^0.1.4",
+    "browserify": "^14.4.0",
+    "mocha": "^3.4.2"
+  },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  }
 }

@@ -4,10 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "_js_merge": "./node_modules/.bin/browserify source/js/index.js --outfile=build/app.js",
-    "_js_compile": "./node_modules/.bin/babel build/app.js --presets=es2015,babili --out-file=build/app.js",
+    "_js_merge": "./node_modules/.bin/browserify source/js/index.js --outfile=build/assets/app.js",
+    "_js_compile": "./node_modules/.bin/babel build/assets/app.js --presets=es2015,babili --out-file=build/assets/app.js",
     "js": "npm run _js_merge && npm run _js_compile",
-    "css": "lessc --autoprefix=\"> 5%\" -x source/less/index.less build/app.css",
+    "css": "lessc --autoprefix=\"> 5%\" -x source/less/index.less build/assets/app.css",
+    "html": "cp source/index.html build/index.html",
+    "all": "npm run js && npm run css && npm run html",
     "test": "mocha --compilers js:babel-core/register"
   },
   "repository": {

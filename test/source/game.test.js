@@ -1,3 +1,4 @@
+const Game = require('../../source/js/game.js').default
 const MODES = require('../../source/js/gameModes.js').default
 
 function _createMode() {
@@ -5,12 +6,6 @@ function _createMode() {
 }
 
 describe('Game', () => {
-  let Game = null
-
-  before(() => {
-    Game = require('../../source/js/game.js').default
-  })
-
   it('should have score property (for both players)', () => {
     let game = new Game()
 
@@ -131,9 +126,84 @@ describe('Game', () => {
     })
   })
 
-  it('should generate a random play')
-  it('should return list of all possible plays')
-  it('should check which player won the round')
-  it('should register a play and update score')
-  it('should reset the game')
-})
+  it('should generate a random play', () => {
+    /**
+     * Theorethically, this test have `0.666^1000` or `7.33e-177` of chance to 
+     * fail due to randomness of the choice.
+     */
+    let game = new Game()
+    game.setGameMode(MODES.classical)
+
+    let shapes = new Set()
+    for (let i=0; i<1000; i++) {
+      let shape = game.getRandomShapeId()
+      shapes.add(shape)
+    }
+
+    assert.isTrue(shapes.has('paper'))
+    assert.isTrue(shapes.has('rock'))
+    assert.isTrue(shapes.has('scissor'))
+    assert.equal(shapes.size, 3)
+  })
+
+  it('should return list of all possible plays', () => {
+    let game = new Game()
+    game.setGameMode(MODES.classical)
+
+    let shapes = game.getAllShapes()
+    assert.deepEqual(shapes, MODES.classical.shapes)
+  })
+
+  it('should check which player won the round', () => {
+    let game = new Game()
+    game.setGameMode(MODES.classical)
+
+    assert.equal(game.check('paper', 'scissor'), 1)
+    assert.equal(game.check('paper', 'rock'), 0)
+    assert.equal(game.check('scissor', 'rock'), 1)
+    assert.equal(game.check('scissor', 'paper'), 0)
+    assert.equal(game.check('rock', 'paper'), 1)
+    assert.equal(game.check('rock', 'scissor'), 0)
+    assert.equal(game.check('rock', 'rock'), -1)
+    assert.equal(game.check('paper', 'paper'), -1)
+    assert.equal(game.check('scissor', 'scissor'), -1)
+  })
+
+  it('should reset the game', () => {
+    let game = new Game()
+
+    game._score1 = 10
+    game._score2 = 10
+    game.reset()
+    assert.equal(game.score1, 0)
+    assert.equal(game.score2, 0)
+  })
+
+  it('should register a play and update score', () => {
+    let game = new Game()
+
+    let fn = () => 1
+    sinon.stub(game, 'check').callsFake(() => fn())
+
+    game.play('paper', 'scissor')
+    assert.equal(game.score1, 0)
+    assert.equal(game.score2, 1)
+
+    fn = () => 0
+    game.play('rock', 'scissor')
+    assert.equal(game.score1, 1)
+    assert.equal(game.score2, 1)
+
+    fn = () => 0
+    game.play('paper', 'rock')
+    assert.equal(game.score1, 2)
+    assert.equal(game.score2, 1)
+
+    fn = () => -1
+    game.play('paper', 'paper')
+    assert.equal(game.score1, 2)
+    assert.equal(game.score2, 1)
+
+  })
+  
+})  

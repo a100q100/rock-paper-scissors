@@ -131,4 +131,44 @@ export default class Game {
       throw new Error(`Missing shape.`)
     }
   }
+
+  getRandomShapeId() {
+    let i = Math.floor(Math.random()*this._gameModeShapes.length)
+    return this._gameModeShapes[i].id
+  }
+
+  getAllShapes() {
+    return JSON.parse(JSON.stringify(this._gameModeShapes)) // copy
+  }
+
+  check(shape1, shape2) {
+    let cond1 = this._gameModeRules[shape1]
+    let cond2 = this._gameModeRules[shape2]
+
+    if (cond1 && cond1.indexOf(shape2) >= 0) {
+      return 0
+    } else if (cond2 && cond2.indexOf(shape1) >= 0) {
+      return 1
+    } else {
+      return -1
+    }
+  }
+
+  reset() {
+    this._score1 = 0
+    this._score2 = 0
+  }
+
+  play(shape1, shape2) {
+    let won = this.check(shape1, shape2)
+
+    if (won === 0) {
+      this._score1 += 1
+    }
+    else if (won === 1) {
+      this._score2 += 1
+    }
+
+    return won
+  }
 }

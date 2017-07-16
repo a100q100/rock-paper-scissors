@@ -1,0 +1,11 @@
+describe('view', () => {
+  it('should receive reset action')
+  it('should receive change player mode action')
+  it('should receive play action')
+  it('should animate initial setup')
+  it('should animate player play (or first computer play)')
+  it('should animate second computer play')
+  it('should animate score and winning')
+  it('should animate reset')
+  it('should animate plays again')
+})

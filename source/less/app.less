@@ -1,0 +1,80 @@
+/**
+ * App page
+ */
+.cp-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+
+/**
+ * Game parts
+ */
+.cp-game {
+  width: 100vw;
+  height: 100vh;
+  min-height: 575px;
+  max-height: 750px;
+  min-width: 300px;
+  max-width: 500px;
+
+  background: @color-main;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cp-game-header {
+  padding: 10px 20px;
+  height: 20%;
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cp-game-body {
+  padding: 60px 80px;
+  height: 45%;
+
+  background: @color-light;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: center;
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    
+    .row {
+      flex-grow: 1;
+
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+    }
+  }
+}
+
+.cp-game-footer {
+  padding: 10px 40px;
+  height: 35%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+
+  img {
+    width: 100%;
+    max-width: 100px;
+  }
+}

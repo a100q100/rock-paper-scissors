@@ -1,0 +1,40 @@
+// Setup bborder-box
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// Reset margins and paddings
+.html,
+.body {
+  margin: 0;
+  padding: 0;
+}
+
+// 
+.cp-header-button {
+  font-family: "Passion One", sans-serif;
+  font-size: 2.5rem;
+  color: @color-white;
+  text-decoration: none;
+
+  &:active {
+    color: shade(@color-white, 10%);
+  }
+}
+
+.cp-rounded-button {
+
+  &:hover {
+    transform: scale(1.1, 1.1);
+  }
+}
+
+.cp-score {
+  font-family: "Passion One", sans-serif;
+  font-size: 3.5rem;
+  color: @color-dark;
+  text-decoration: none;
+}

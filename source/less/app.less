@@ -1,80 +1,171 @@
 /**
- * App page
+ * PAGE
  */
-.cp-page {
+.cup-page {
+  background: #e4e4e4;
   width: 100vw;
   height: 100vh;
-  display: flex;
-
-  align-items: center;
-  align-content: center;
-  justify-content: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
 }
 
 /**
- * Game parts
+ * GAME BLOCKS
  */
-.cp-game {
-  width: 100vw;
-  height: 100vh;
-  min-height: 575px;
-  max-height: 750px;
-  min-width: 300px;
-  max-width: 500px;
-
-  background: @color-main;
-
-  display: flex;
-  flex-direction: column;
-}
-
-.cp-game-header {
-  padding: 10px 20px;
-  height: 20%;
-  flex-shrink: 0;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.cp-game-body {
-  padding: 60px 80px;
-  height: 45%;
-
-  background: @color-light;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: stretch;
-  align-content: center;
+.cup-game {
+  position: absolute;
+  background: @color-gray;
   
-  .column {
-    display: flex;
-    flex-direction: column;
-    
-    .row {
-      flex-grow: 1;
+  @media @tabletDown {
+    width: 100%;
+    height: 100%;
+  }
 
-      display: flex;
-      align-items: center;
-      text-align: center;
-      justify-content: center;
-    }
+  @media @notebookUp {
+    max-width: 900px;
+    width: 90%;
+    height: 90%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
-.cp-game-footer {
-  padding: 10px 40px;
-  height: 35%;
+.cup-game-header {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: @size-header;
+  padding: 10px 10px;
+  background: @color-white;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.cup-game-body {
+  position: absolute;
+  top: @size-header;
+  bottom: @size-footer;
+  left: 0;
+  right: 0;
+  padding: 30px 10px;
+  overflow-y: auto;
+  background: @color-white;
+}
+.cup-game-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  height: @size-footer;
+  padding: 10px 20px;
+  background: @color-main;
+  border-radius: 10px;
+  text-align: center;
+}
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
 
-  img {
-    width: 100%;
-    max-width: 100px;
+/**
+ * CHAT
+ */
+.cup-chat {
+
+}
+.cup-chat-row {
+  &.left { text-align: left; }
+  &.right { text-align: right; }
+  &.center { text-align: center; }
+}
+
+.cup-chat-bubble {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  color: @color-black;
+  font-size: 1rem;
+
+  &.player {
+    background: @color-main;
+    border-top-right-radius: 0;
+  }
+  &.pc {
+    background: @color-gray;
+    border-top-left-radius: 0;
+  }
+}
+
+.cup-chat-divider {
+  color: @color-gray2;
+  margin: 10px 0 30px 0;
+  font-size: .9rem;
+
+  &:before, 
+  &:after {
+    content: "";
+    position: relative;
+    display: inline-block;
+    top: -4px;
+    border-bottom: 2px solid @color-gray2;
+    width: 30px;
+  }
+  &:after {
+    left: 10px;
+  }
+  &:before {
+    right: 10px;
+  }
+}
+
+/**
+ * BUTTONS
+ */
+.cup-button {
+  display: inline-block;
+  min-width: 30px;
+  height: 30px;
+  background: fadeout(@color-black, 50%);
+  color: @color-white;
+  border-radius: 25px;
+  font-size: 1rem;
+  text-align: center;
+  line-height: 0.6rem;
+  padding: 10px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .3s ease;
+  
+  span {
+    position: relative;
+    transform: translate(0, -50%);
+  }
+  i {
+    position: absolute;
+    transform: translate(-50%, -10%);
+  }
+
+  &.footer {
+    height: 50px;
+    min-width: 50px;
+    font-size: 2rem;
+    background: @color-dark;
+    margin: 0 10px;
+  }
+
+  &.disabled {
+    cursor: default;
+  }
+  &.right {
+    float: right;
+  }
+  &.left {
+    float: left;
+  }
+  &:hover {
+    transform: translate(0, -2px);
+  }
+  &:active {
+    transform: translate(0, 1px);
   }
 }

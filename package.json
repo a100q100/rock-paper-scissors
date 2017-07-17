@@ -9,8 +9,8 @@
     "js": "npm run _js_merge && npm run _js_compile",
     "css": "lessc --autoprefix=\"> 5%\" -x source/less/index.less build/assets/app.css",
     "html": "cp source/index.html build/index.html",
-    "imgs": "cp -r source/imgs build/assets",
-    "all": "npm run imgs && npm run js && npm run css && npm run html",
+    "static": "cp -r source/imgs build/assets",
+    "all": "npm run static && npm run js && npm run css && npm run html",
     "test": "./node_modules/.bin/mocha --compilers=js:babel-core/register --require=test/unit.js test/source/*.test.js"
   },
   "repository": {

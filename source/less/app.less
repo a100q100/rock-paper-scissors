@@ -14,7 +14,7 @@
  */
 .cup-game {
   position: absolute;
-  background: @color-gray;
+  background: @color-white;
   overflow: hidden;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
   min-width: 300px;
@@ -66,6 +66,16 @@
   background: @color-main;
   border-radius: 10px;
   text-align: center;
+
+
+  &.locked {
+    pointer-events: none;
+    opacity: 0.3;
+  }
+
+  &.hidden {
+    display: none;
+  }
 }
 
 

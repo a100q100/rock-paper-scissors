@@ -7,65 +7,54 @@
 
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
   <link href="assets/app.css" rel="stylesheet">
-  <script src="assets/app.js"></script>
 </head>
 <body>
   
   <div class="cup-page">
     <div class="cup-game">
       <div class="cup-game-header">
-        <a class="cup-button left" href="#">
+        <a class="cup-button left"
+           href="#"
+           onclick="$view.actionChangePlayerMode()">
           <i class="fa fa-user"></i>
         </a>
         <a class="cup-button center" href="#">
           <span>classical</span>
         </a>
-        <a class="cup-button right" href="#">
+        <a class="cup-button right"
+           href="#"
+           onclick="$view.actionReset()">
           <i class="fa fa-trash"></i>
         </a>
       </div>
       <div class="cup-game-body">
         <div class="cup-chat">
-          <div class="cup-chat-row right">
-            <div class="cup-chat-bubble player">Paper</div>
-          </div>
-
-          <div class="cup-chat-row left">
-            <div class="cup-chat-bubble pc">Paper, tied!</div>
-          </div>
-
-          <div class="cup-chat-row center">
-            <div class="cup-chat-divider">3 x 4</div>
-          </div>
-
-          <div class="cup-chat-row right">
-            <div class="cup-chat-bubble player">Paper</div>
-          </div>
-
-          <div class="cup-chat-row left">
-            <div class="cup-chat-bubble pc">Rock, you won :c</div>
-          </div>
-
-          <div class="cup-chat-row center">
-            <div class="cup-chat-divider">3 x 5</div>
-          </div>
+          
         </div>
       </div>
 
-      <div class="cup-game-footer">
-        <a class="cup-button footer" href="#">
+      <div class="cup-game-footer hidden">
+        <a class="cup-button footer"
+           href="#"
+           onclick="$view.actionPlay('rock')">
           <i class="fa fa-hand-rock-o"></i>
         </a>
-        <a class="cup-button footer" href="#">
+        <a class="cup-button footer"
+           href="#"
+           onclick="$view.actionPlay('paper')">
           <i class="fa fa-hand-paper-o"></i>
         </a>
-        <a class="cup-button footer" href="#">
+        <a class="cup-button footer"
+           href="#"
+           onclick="$view.actionPlay('scissor')">
           <i class="fa fa-hand-scissors-o"></i>
         </a>
       </div>
     </div>
   </div>
 
+  <script src="assets/app.js"></script>
 </body>
 </html>

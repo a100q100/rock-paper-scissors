@@ -37,6 +37,12 @@ export default class View {
      * @type {HTMLElement}
      */
     this._footerElement = null
+    
+    /**
+     * Reference to the DOM game body container.
+     * @type {HTMLElement}
+     */
+    this._bodyElement = null
 
     /**
      * Previous timestamp (used on the _tick method).
@@ -56,6 +62,7 @@ export default class View {
     this._app = app
     this._chatElement = document.getElementsByClassName('cup-chat')[0]
     this._footerElement = document.getElementsByClassName('cup-game-footer')[0]
+    this._bodyElement = document.getElementsByClassName('cup-game-body')[0]
   }
 
   /**
@@ -103,7 +110,7 @@ export default class View {
     this._addAnimation(() => {
       let item = helpers.createChatBubble('right', 'player', message)
       helpers.addChild(this._chatElement, item)
-      helpers.scrollDown(this._chatElement)
+      helpers.scrollDown(this._bodyElement)
     }, time)
   }
 
@@ -117,7 +124,7 @@ export default class View {
     this._addAnimation(() => {
       let item = helpers.createChatBubble('left', 'pc', message)
       helpers.addChild(this._chatElement, item)
-      helpers.scrollDown(this._chatElement)
+      helpers.scrollDown(this._bodyElement)
     }, time)
   }
 
@@ -131,7 +138,7 @@ export default class View {
     this._addAnimation(() => {
       let item = helpers.createChatDivider(message)
       helpers.addChild(this._chatElement, item)
-      helpers.scrollDown(this._chatElement)
+      helpers.scrollDown(this._bodyElement)
     }, time)
   }
 

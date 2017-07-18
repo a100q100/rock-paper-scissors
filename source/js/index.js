@@ -9,3 +9,5 @@ const game = new Game()
 
 app.configure(view, game)
 app.run()
+
+global.$view = view

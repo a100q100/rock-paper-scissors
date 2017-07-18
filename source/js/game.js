@@ -1,5 +1,5 @@
 /**
- * The Game class is the model of our MVC achitecture, it handles all the game
+ * The Game class is the model of our MVC architecture, it handles all the game
  * rules and score management.
  */
 export default class Game {
@@ -7,12 +7,41 @@ export default class Game {
    * Constructor.
    */
   constructor() {
+
+    /**
+     * Player 1 score. Default to 0.
+     * @type {Number}
+     */
     this._score1 = 0
+
+    /**
+     * Player 2 score. Default to 0.
+     * @type {Number}
+     */
     this._score2 = 0
 
+    /**
+     * ID of the current game mode.
+     * @type {String}
+     */
     this._gameModeId = null
+
+    /**
+     * Name of the current game mode.
+     * @type {String}
+     */
     this._gameModeName = null
+
+    /**
+     * List of shapes in the current game mode.
+     * @type {List}
+     */
     this._gameModeShapes = null
+
+    /**
+     * List of rules in the current game mode.
+     * @type {Object}
+     */
     this._gameModeRules = null
   }
 

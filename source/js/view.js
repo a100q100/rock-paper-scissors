@@ -165,12 +165,20 @@ export default class View {
   }
 
   /**
-   * Show the footer buttons.
-   * 
+   * Create buttons and show the footer buttons.
+   *
+   * @param {Array} buttons - Array of {id, label} buttons.
    * @param {Number} [time=0] - The interval to perform the command.
    */
-  doShowFooter(time=0) {
+  doShowFooter(buttons, time=0) {
     this._addAnimation(() => {
+      helpers.removeChildren(this._footerElement)
+
+      for (let i=0; i<buttons.length; i++) {
+        let button = helpers.createFooterButton(buttons[i].id, buttons[i].label)
+        helpers.addChild(this._footerElement, button)
+      }
+
       helpers.removeClass(this._footerElement, 'hidden')
     }, time)
   }
@@ -198,7 +206,7 @@ export default class View {
         let html = `<i class="fa fa-spinner fa-fw fa-spin"></i>`
         let item = helpers.createChatBubble('left loading', 'pc', html)
         helpers.addChild(this._chatElement, item)
-        helpers.scrollDown(this._chatElement)
+        helpers.scrollDown(this._bodyElement)
       }
     }, time)
   }

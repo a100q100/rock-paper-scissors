@@ -169,6 +169,15 @@ describe('Game', () => {
     assert.equal(game.check('scissor', 'scissor'), -1)
   })
 
+  it('should return the shape label', () => {
+    let game = new Game()
+    game.setGameMode(MODES.classical)
+
+    assert.equal(game.getLabel('paper'), 'Paper')
+    assert.equal(game.getLabel('scissor'), 'Scissor')
+    assert.equal(game.getLabel('rock'), 'Rock')
+  })
+
   it('should reset the game', () => {
     let game = new Game()
 

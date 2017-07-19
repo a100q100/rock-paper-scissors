@@ -174,6 +174,21 @@ export default class Game {
   }
 
   /**
+   * Returns the label of a given shape.
+   *
+   * @param {String} shape - The shape id.
+   */
+  getLabel(shape) {
+    for (let i=0; i<this._gameModeShapes.length; i++) {
+      if (this._gameModeShapes[i].id === shape) {
+        return this._gameModeShapes[i].label
+      }
+    }
+
+    return null
+  }
+
+  /**
    * Resets the game by setting the score to 0 for both players.
    */
   reset() {

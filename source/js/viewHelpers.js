@@ -1,6 +1,12 @@
 /**
  * This module contains helpers for creating and manipulate DOM elements.
  */
+const ICON_MAP = {
+  'random'  : 'fa fa-fw fa-play-circle',
+  'paper'   : 'fa fa-fw fa-hand-paper-o',
+  'rock'    : 'fa fa-fw fa-hand-rock-o',
+  'scissor' : 'fa fa-fw fa-hand-scissors-o',
+}
 
 /**
  * Creates a chat bubble.
@@ -48,12 +54,14 @@ export function createChatDivider(message) {
  * @returns {HTMLElement}
  */
 export function createFooterButton(id, label) {
+
   let parent = document.createElement('a')
   parent.className = `cup-button footer`
 
   let child = document.createElement('i')
-  child.className = `fa fa-hand-${id}-o`
-  child.innerHTML = message
+  child.className = ICON_MAP[id]
+  // child.innerHTML = label
+  child.onclick = () => $view.actionPlay(id)
 
   parent.appendChild(child)
   return parent
@@ -67,6 +75,15 @@ export function createFooterButton(id, label) {
  */
 export function addChild(parent, child) {
   parent.appendChild(child)
+}
+
+/**
+ * Remove all children from a container.
+ *
+ * @param {HTMLElement} parent - The container.
+ */
+export function removeChildren(parent) {
+  parent.innerHTML = ''
 }
 
 /**

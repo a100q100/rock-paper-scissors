@@ -1,5 +1,6 @@
 import MODES from './gameModes.js'
 
+// Possible return messages, depending on the result of the match.
 const WIN_MESSAGES = [
   'I won!',
   'that goes to me!',
@@ -7,7 +8,6 @@ const WIN_MESSAGES = [
   'one more to me.',
   'I won =)',
 ]
-
 const LOSE_MESSAGES = [
   'you won!',
   'you won :C',
@@ -15,7 +15,6 @@ const LOSE_MESSAGES = [
   'I lost!',
   'I lost :\'(',
 ]
-
 const TIE_MESSAGES = [
   'tied!',
   'that\'s a tie!',
@@ -28,12 +27,36 @@ const TIE_MESSAGES = [
  * commands that will be executed by the view.
  */
 export default class App {
+  /**
+   * Constructor.
+   */
   constructor() {
+    /**
+     * Instance of View.
+     * @type {View}
+     */
     this._view = null
+
+    /**
+     * Instance of Game.
+     * @type {Game}
+     */
     this._game = null
+    
+    /**
+     * Whether the player is on or not (if false, the pc is playing against 
+     * pc). Defaults to true.
+     * @type {Boolean}
+     */
     this._inPlayerMode = true
   }
   
+  /**
+   * Configure the App with the references to view and game.
+   *
+   * @param {View} view - The view instance.
+   * @param {Game} game - The game instance.
+   */
   configure(view, game) {
     this._view = view
     this._game = game
@@ -42,11 +65,18 @@ export default class App {
     this._view.configure(this)
   }
 
+  /**
+   * Start the game. This method will send the initialization commands to the 
+   * view.
+   */
   run() {
     this._view.run()
     this.reset()
   }
 
+  /**
+   * Reset the game, erasing all history of plays (the chat) and the scores.
+   */
   reset() {
     let buttons = this._getFooterButtons()
 
@@ -64,6 +94,14 @@ export default class App {
     this._view.doUnlockFooter()
   }
 
+  /**
+   * Register a player move. You must send a game mode shape or 'random' string
+   * for random plays. This method will send the commands to view to animate
+   * the results of the play.
+   *
+   * @param {String} playerShape - The shape of the current game mode or 
+   *        'random'.
+   */
   play(playerShape) {
     let playerLabel = null
 
@@ -94,15 +132,21 @@ export default class App {
     this._view.doUnlockFooter(0)
   }
 
+  /**
+   * Change the player mode (player vs pc OR pc vs pc), toggling between them.
+   */
   changePlayerMode() {
     this._inPlayerMode = !this._inPlayerMode
     this.reset()
   }
 
-  changeGameMode() {
-
-  }
-
+  /**
+   * Helper to get the footer button specifications. It will return the game
+   * mode shapes or a specification for a random button, depending on the 
+   * player mode.
+   *
+   * @returns {Array} Array of {id, label} objects.
+   */
   _getFooterButtons() {
     if (this._inPlayerMode) {
       return this._game.getAllShapes()
@@ -111,6 +155,12 @@ export default class App {
     }
   }
 
+  /**
+   * Helper to create a result message, e.g., "You lose".
+   *
+   * @param {Number} winner - 0 for pc, 1 for player, -1 for tie
+   * @return {String}
+   */
   _getResultMessage(winner) {
     let list = []
     if (winner === -1) {

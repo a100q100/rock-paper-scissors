@@ -110,25 +110,13 @@
 }
 
 .cup-chat-divider {
-  color: @color-gray2;
+  display: inline-block;
+  background: @color-dark;
+  color: @color-white;
+  padding: 5px 8px;
   margin: 10px 0 30px 0;
-  font-size: .9rem;
-
-  &:before, 
-  &:after {
-    content: "";
-    position: relative;
-    display: inline-block;
-    top: -4px;
-    border-bottom: 2px solid @color-gray2;
-    width: 30px;
-  }
-  &:after {
-    left: 10px;
-  }
-  &:before {
-    right: 10px;
-  }
+  font-size: .8rem;
+  border-radius: 10px;
 }
 
 /**

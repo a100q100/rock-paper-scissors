@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rock Paper Scissors</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  
-  <link href="assets/app.css" rel="stylesheet">
-</head>
-<body>
-  
-  <div class="cup-page">
-    <div class="cup-game">
-      <div class="cup-game-header">
-        <a class="cup-button left"
-           href="#"
-           onclick="$view.actionChangePlayerMode()">
-          <i class="fa fa-user"></i>
-        </a>
-        <a class="cup-button center" href="#">
-          <span>classical</span>
-        </a>
-        <a class="cup-button right"
-           href="#"
-           onclick="$view.actionReset()">
-          <i class="fa fa-trash"></i>
-        </a>
-      </div>
-      <div class="cup-game-body">
-        <div class="cup-chat">
-          
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <link href="assets/app.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="cup-page">
+
+      <!-- GAME CONTAINER -->
+      <div class="cup-game">
+
+        <!-- HEADER -->
+        <div class="cup-game-header">
+          <a class="cup-button left"
+             href="#"
+             onclick="$view.actionChangePlayerMode()">
+            <i class="fa fa-user"></i>
+          </a>
+          <a class="cup-button center" href="#">
+            <span>classical</span>
+          </a>
+          <a class="cup-button right"
+             href="#"
+             onclick="$view.actionReset()">
+            <i class="fa fa-trash"></i>
+          </a>
         </div>
+        <!-- END HEADER -->
+  
+        <!-- BODY -->
+        <div class="cup-game-body">
+          <div class="cup-chat">
+          </div>
+        </div>
+        <!-- END BODY -->
+
+        <!-- FOOTER -->
+        <div class="cup-game-footer hidden">
+        </div>
+        <!-- END FOOTER -->
       </div>
 
-      <div class="cup-game-footer hidden">
-        <a class="cup-button footer"
-           href="#"
-           onclick="$view.actionPlay('rock')">
-          <i class="fa fa-hand-rock-o"></i>
-        </a>
-        <a class="cup-button footer"
-           href="#"
-           onclick="$view.actionPlay('paper')">
-          <i class="fa fa-hand-paper-o"></i>
-        </a>
-        <a class="cup-button footer"
-           href="#"
-           onclick="$view.actionPlay('scissor')">
-          <i class="fa fa-hand-scissors-o"></i>
-        </a>
-      </div>
     </div>
-  </div>
+      <!-- END GAME CONTAINER -->
 
-  <script src="assets/app.js"></script>
-</body>
+    <script src="assets/app.js"></script>
+  </body>
 </html>

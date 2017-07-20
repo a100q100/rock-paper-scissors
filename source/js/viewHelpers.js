@@ -1,6 +1,11 @@
 /**
  * This module contains helpers for creating and manipulate DOM elements.
  */
+
+/**
+ * Icon map to use translate the shape id into an icon on HTML. This should be
+ * in a configuration file.
+ */
 const ICON_MAP = {
   'random'  : 'fa fa-fw fa-play-circle',
   'paper'   : 'fa fa-fw fa-hand-paper-o',

@@ -2,6 +2,7 @@
  * Game modes.
  */
 const MODES = {
+  // Classical mode, using rock, paper and scissors
   classical: {
     id: 'classical',
     name: 'Classical',

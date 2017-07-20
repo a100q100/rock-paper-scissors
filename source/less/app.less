@@ -7,6 +7,10 @@
   height: 100vh;
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 /**
@@ -28,9 +32,6 @@
     max-width: 550px;
     width: 90%;
     height: 90%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 }
 
@@ -136,6 +137,9 @@
   cursor: pointer;
   text-decoration: none;
   transition: transform .3s ease;
+  // -webkit-backface-visibility: hidden;
+  // -webkit-transform-style: preserve-3d; 
+  // outline: 1px solid transparent;
   
   span {
     position: relative;
